@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Chart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .org-tree ul {
+            padding-left: 20px;
+        }
+        .org-tree li {
+            position: relative;
+            padding-left: 25px;
+            transition: all 0.3s;
+        }
+        .org-tree li::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 0;
+            width: 20px;
+            height: 1px;
+            background: #ccc;
+        }
+        .org-tree li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 100%;
+            background: #ccc;
+        }
+        .org-tree li:last-child::after {
+            height: 12px;
+        }
+        .org-tree .branch {
+            cursor: pointer;
+        }
+        .org-tree .hidden-members {
+            display: none;
+        }
+        .org-tree .show-members {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6">
+        <div class="org-tree">
+            <div class="text-2xl font-bold text-center mb-8 text-blue-600">Kush Sir</div>
+            <ul class="space-y-4">
+                <!-- Sufiyan Branch -->
+                <li>
+                    <div class="branch bg-blue-50 p-3 rounded-lg hover:bg-blue-100">
+                        <span class="font-semibold">Sufiyan (1)</span>
+                        <div class="ml-4">
+                            <div class="font-medium text-gray-700">Banker (2)</div>
+                            <ul class="text-sm text-gray-600 ml-4">
+                                <li>Dipesh</li>
+                                <li>Asif</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- James Branch -->
+                <li>
+                    <div class="branch bg-blue-50 p-3 rounded-lg hover:bg-blue-100">
+                        <span class="font-semibold">James (1)</span>
+                        <div class="ml-4">
+                            <div class="font-medium text-gray-700">Jockeys (24)</div>
+                            <ul class="text-sm text-gray-600 ml-4 hidden-members">
+                                <li>AJAY</li>
+                                <li>AKASH</li>
+                                <li>ANKIT</li>
+                                <li>CHANDRA</li>
+                                <li>DEEPIKA</li>
+                                <li>DIPESH</li>
+                                <li>GOURAV</li>
+                                <li>HARSH</li>
+                                <li>HARSH (K)</li>
+                                <li>MAHESH</li>
+                                <li>MONU SHARMA</li>
+                                <li>PAWAN BISHT</li>
+                                <li>PRIYANKA</li>
+                                <li>RAVI</li>
+                                <li>RENU</li>
+                                <li>ROSHAN</li>
+                                <li>SACHIN</li>
+                                <li>SAKSHI</li>
+                                <li>SANTOSH</li>
+                                <li>SHEETAL</li>
+                                <li>SHEETAL (S)</li>
+                                <li>SOURABH</li>
+                                <li>SUBHAM</li>
+                                <li>VIVEK</li>
+                            </ul>
+                            <button class="text-blue-600 text-sm mt-2 toggle-members">Show Members</button>
+                            <div class="font-medium text-gray-700 mt-2">Coordinator (1)</div>
+                            <ul class="text-sm text-gray-600 ml-4">
+                                <li>Radha</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Shishir Branch -->
+                <li>
+                    <div class="branch bg-blue-50 p-3 rounded-lg hover:bg-blue-100">
+                        <span class="font-semibold">Shishir (1)</span>
+                        <div class="ml-4">
+                            <div class="font-medium text-gray-700">Nepali Extractor (13)</div>
+                            <ul class="text-sm text-gray-600 ml-4 hidden-members">
+                                <li>SAMIKSHYA KANDEL</li>
+                                <li>KIRAN DHUNGANA</li>
+                                <li>SUDEEP GYAWALI</li>
+                                <li>SAJINA DEULA</li>
+                                <li>REEVA BANIYA</li>
+                                <li>BIKRANTA SUBEDI</li>
+                                <li>USHA</li>
+                                <li>BINIS</li>
+                                <li>NARAYAN ADHIKARI</li>
+                                <li>ANISHA</li>
+                                <li>SUDARSHAN GYAWALI</li>
+                                <li>SANGHAM MAHAT</li>
+                                <li>SUNIL SUBEDI</li>
+                            </ul>
+                            <button class="text-blue-600 text-sm mt-2 toggle-members">Show Members</button>
+                            <div class="font-medium text-gray-700 mt-2">Nepali Accountant (4)</div>
+                            <ul class="text-sm text-gray-600 ml-4">
+                                <li>Pratik</li>
+                                <li>Ichha</li>
+                                <li>Sikha</li>
+                                <li>Madan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.toggle-members').forEach(button => {
+            button.addEventListener('click', function() {
+                const membersList = this.previousElementSibling;
+                const isHidden = membersList.classList.contains('hidden-members');
+                
+                membersList.classList.toggle('hidden-members');
+                membersList.classList.toggle('show-members');
+                this.textContent = isHidden ? 'Hide Members' : 'Show Members';
+            });
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
